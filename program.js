@@ -1,11 +1,13 @@
-// JADE Exercise 3 of 8
+// GOOD OLD FORM Exercise 4 of 8
 
-const express = require('express')
-const app = express()
+const express = require('express'),
+bodyparser = require('body-parser'),
+app = express();
 
-app.set('views', process.argv[3]||path.join(__dirname, 'templates'))
-app.set('view engine', 'jade')
-app.get('/home', (req, res) => {
-  res.render('index', {date: new Date().toDateString()})
+app.use(bodyparser.urlencoded({extended: false}))
+
+app.post('/form', (req, res) => {
+    res.end(req.body.str.split('').reverse().join(''));
 })
+
 app.listen(process.argv[2])
