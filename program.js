@@ -1,11 +1,11 @@
-// STATIC Exercise 2 of 8
+// JADE Exercise 3 of 8
 
 const express = require('express')
 const app = express()
+
+app.set('views', process.argv[3]||path.join(__dirname, 'templates'))
+app.set('view engine', 'jade')
 app.get('/home', (req, res) => {
-  res.end('Hello World!')
+  res.render('index', {date: new Date().toDateString()})
 })
-
-app.use(express.static(process.argv[3]||path.join(__dirname, 'public')));
-
 app.listen(process.argv[2])
