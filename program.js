@@ -25,3 +25,43 @@ the parameter process.argv[3]
 4.Listen on the port number supplied by process.argv[2].
 
 */
+
+/* Previous solutions
+// Exercise 1 of 8
+const express = require('express')
+const app = express()
+
+app.set('views', process.argv[3]||path.join(__dirname, 'templates'))
+app.set('view engine', 'jade')
+app.get('/home', (req, res) => {
+  res.render('index', {date: new Date().toDateString()})
+})
+app.listen(process.argv[2])
+
+// STATIC Exercise 2 of 8
+
+const express = require('express')
+const app = express()
+app.get('/home', (req, res) => {
+  res.end('Hello World!')
+})
+
+app.use(express.static(process.argv[3]||path.join(__dirname, 'public')));
+
+app.listen(process.argv[2])
+
+// STYLISH CSS Exercise 5 of 8
+
+const express = require('express'),
+bodyparser = require('body-parser'),
+app = express();
+
+app.use(bodyparser.urlencoded({extended: false}))
+
+app.post('/form', (req, res) => {
+    res.end(req.body.str.split('').reverse().join(''));
+})
+
+app.listen(process.argv[2])
+
+*/
