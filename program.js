@@ -28,6 +28,16 @@ the parameter process.argv[3]
 
 /* Previous solutions
 // HELLO WORLD! Exercise 1 of 8
+// My Solution
+
+const express = require('express')
+const app = express()
+app.get('/home', (req, res) => {
+  res.end('Hello World!')
+})
+app.listen(process.argv[2])
+
+// HELLO WORLD! Exercise 1 of 8
 const express = require('express')
 const app = express()
 
