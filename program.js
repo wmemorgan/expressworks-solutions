@@ -4,22 +4,45 @@
 const express = require('express'),
 app = express();
 
+app.put('/message/:id', (req, res) => {
+    //Extract parameters from within the request handlers
+    var id = req.params.id;
+   
+    //Transform and return the request message ID to SHA1 hash   
+    var result = require('crypto')
+        .createHash('sha1')
+        .update(new Date().toDateString() + id)
+        .digest('hex')
+     
+     res.end(result);
+});
+
 app.listen(process.argv[2])
 
 /*-------NOTES----------
-1. Load and activate express server
-PUT /message/526aa677a8ceb64569c9d4fb
+Create an Express.js server that processes PUT '/message/:id' requests.
 
-2. Load and activate crypto module
+For instance:
+    PUT /message/526aa677a8ceb64569c9d4fb
+
+1. Load and activate express server
+app.put('/path/:NAME', function(req, res){...});
+
+2. Extract parameters from within the request handlers. 
+To extract parameters from within the request handlers, use:
+    req.params.NAME
+    
+3.  
 require('crypto')
   .createHash('sha1')
   .update(new Date().toDateString() + id)
   .digest('hex')
 
-3. Extract parameters from within the request handlers
-app.put('/path/:NAME', function(req, res){...});
-
 */
+
+
+
+
 
 /*-------PREVIOUS SOLUTIONS----
 //STYLISH CSS Exercise 5 of 8
