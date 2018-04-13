@@ -9,12 +9,12 @@ app.put('/message/:id', (req, res) => {
     var id = req.params.id;
    
     //Transform and return the request message ID to SHA1 hash   
-    var result = require('crypto')
+    var idHash = require('crypto')
         .createHash('sha1')
         .update(new Date().toDateString() + id)
         .digest('hex')
      
-     res.end(result);
+    res.end(idHash);
 });
 
 app.listen(process.argv[2])
@@ -32,31 +32,10 @@ app.put('/path/:NAME', function(req, res){...});
 To extract parameters from within the request handlers, use:
     req.params.NAME
     
-3.  
+3. Transform and return the request message ID to SHA1 hash   
 require('crypto')
   .createHash('sha1')
   .update(new Date().toDateString() + id)
   .digest('hex')
-
-*/
-
-
-
-
-
-/*-------PREVIOUS SOLUTIONS----
-//STYLISH CSS Exercise 5 of 8
-
-//Load and activate express module
-const express = require('express'),
-app = express();
-
-//Load and activate stylus middleware
-app.use(require('stylus').middleware(process.argv[3]));
-
-//Serve static HTML files
-app.use(express.static(process.argv[3]));
-
-app.listen(process.argv[2])
 
 */
